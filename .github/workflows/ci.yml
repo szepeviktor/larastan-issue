@@ -1,0 +1,29 @@
+name: "Larastan"
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "07 0 * * *"
+
+jobs:
+  larastan:
+    strategy:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout code"
+        uses: "actions/checkout@v2"
+
+      - name: "Setup PHP"
+        uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "8.0"
+          extensions: "dom, curl, libxml, mbstring, zip"
+          tools: "composer:v2"
+          coverage: "none"
+
+      - name: "Install dependencies"
+        run: "composer update --no-interaction --no-progress --prefer-dist"
+
+      - name: "Run Larastan"
+        run: "vendor/bin/phpstan analyze"
