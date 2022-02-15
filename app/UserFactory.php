@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class UserFactory implements Factory
+class UserFactory extends Factory
 {
     public function configure(): UserFactory
     {
