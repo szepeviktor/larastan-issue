@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Mail\Mailer;
 
 class Authenticate extends Middleware
 {
@@ -19,7 +19,7 @@ class Authenticate extends Middleware
             return route('login');
         }
 
-        $transports = Mail::getSymfonyTransport();
+        $transports = Mailer::getSymfonyTransport();
 
         return null;
     }
