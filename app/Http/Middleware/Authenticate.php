@@ -19,7 +19,7 @@ class Authenticate extends Middleware
             return route('login');
         }
 
-        $transport = Mail::getSymfonyTransport();
+        $transports = Mail::getSymfonyTransport();
 
         return null;
     }
