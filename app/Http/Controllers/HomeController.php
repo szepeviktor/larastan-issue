@@ -13,3 +13,4 @@ class HomeController extends Controller
         $this->user = User::factory()->createOne();
     }
 }
+
